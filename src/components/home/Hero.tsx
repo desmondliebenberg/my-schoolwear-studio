@@ -35,15 +35,15 @@ const Hero: React.FC = () => {
             <div className="flex items-center justify-center md:justify-start mb-3">
               <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                 <Sparkles className="w-3.5 h-3.5 mr-1" /> 
-                Premium School Sportswear
+                Premium Quality
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-4 text-balance">
-              Custom Sportswear <br className="hidden md:block" />
-              For Your School Team
+              Clothing Designed <br className="hidden md:block" />
+              for You
             </h1>
             <p className="text-lg md:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto md:mx-0">
-              High-quality, customizable sportswear designed for school teams, clubs, and sports days. Create your perfect kit with our easy-to-use design studio.
+              Unique, customizable pieces handcrafted with exceptional quality and attention to detail.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button size="lg" asChild className="group">
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                   </span>
                   <img 
                     src="/placeholder.svg" 
-                    alt="Customizable school sportswear" 
+                    alt="Customizable clothing" 
                     className="max-h-[70vh] object-contain"
                   />
                 </div>
