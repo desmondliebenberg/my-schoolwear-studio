@@ -9,7 +9,7 @@ import {
   Medal,
   Heart,
   ShoppingBag,
-  Pants
+  PantsShort
 } from 'lucide-react';
 
 interface CategoryButtonProps {
@@ -25,7 +25,7 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({ category, icon, 
       case 'Vests':
         return <Shirt className="h-6 w-6" />;
       case 'Tights':
-        return <Pants className="h-6 w-6" />;
+        return <PantsShort className="h-6 w-6" />;
       case 'Rugby':
         return <Medal className="h-6 w-6" />;
       case 'Netball':
@@ -39,7 +39,7 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({ category, icon, 
       case 'Jackets':
         return <ShoppingBag className="h-6 w-6" />;
       case 'Tracksuits':
-        return <Pants className="h-6 w-6" />;
+        return <PantsShort className="h-6 w-6" />;
       case 'Accessories':
         return <Ruler className="h-6 w-6" />;
       default:
