@@ -1,44 +1,44 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { getProductCategories } from '@/data/products';
+import { CategoryButton } from '../ui/CategoryButton';
 
 const Categories: React.FC = () => {
-  // Define our new categories based on the image
-  const displayCategories = [
-    'All',
-    'T-Shirts',
-    'Pants',
-    'Hoodies',
-    'Jackets',
-    'Shirts',
-    'Shorts',
-    'Sweaters'
-  ];
+  const categories = getProductCategories();
   
-  const [activeCategory, setActiveCategory] = useState('All');
-  
+  // Map category names to icon names (placeholder for now)
+  const categoryIcons: Record<string, string> = {
+    'Vests': 'jersey',
+    'Tights': 'pants',
+    'Rugby': 'rugby',
+    'Netball': 'dress',
+    'Golfers': 'shirt',
+    'T-Shirts': 'tshirt',
+    'Shorts': 'shorts',
+    'Jackets': 'jacket',
+    'Tracksuits': 'tracksuit',
+    'Accessories': 'cap'
+  };
+
   return (
-    <section className="py-16 bg-white dark:bg-gray-950">
+    <section className="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold">Shop Collection</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Shop By Category</h2>
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            Browse our wide range of high-quality sportswear categories for your school team needs.
+          </p>
         </div>
         
-        <div className="flex flex-wrap gap-2 mt-4">
-          {displayCategories.map((category) => (
-            <Link
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {categories.map((category, index) => (
+            <CategoryButton 
               key={category}
-              to={category === 'All' ? '/products' : `/products?category=${category}`}
-              onClick={() => setActiveCategory(category)}
-              className={`inline-block px-4 py-2 rounded-full transition-all ${
-                activeCategory === category
-                  ? 'bg-black text-white dark:bg-white dark:text-black'
-                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700'
-              }`}
-            >
-              {category}
-            </Link>
+              category={category}
+              icon={categoryIcons[category] || 'default'}
+              delay={index * 0.1}
+            />
           ))}
         </div>
       </div>
