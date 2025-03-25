@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getProductCategories } from '@/data/products';
-import { motion } from 'framer-motion';
 import { CategoryButton } from '../ui/CategoryButton';
 
 const Categories: React.FC = () => {
