@@ -5,14 +5,13 @@ import { motion } from 'framer-motion';
 import { ProductCategory } from '@/data/products';
 import {
   Shirt,
-  Pants,
   Scissors,
   Ruler,
   Medal,
   Tshirt,
-  Shirt as ShirtIcon,
   Heart,
-  ShoppingBag
+  ShoppingBag,
+  PantsIcon
 } from 'lucide-react';
 
 interface CategoryButtonProps {
@@ -26,15 +25,15 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({ category, icon, 
   const getIcon = () => {
     switch (category) {
       case 'Vests':
-        return <ShirtIcon className="h-6 w-6" />;
+        return <Shirt className="h-6 w-6" />;
       case 'Tights':
-        return <Pants className="h-6 w-6" />;
+        return <PantsIcon className="h-6 w-6" />;
       case 'Rugby':
         return <Medal className="h-6 w-6" />;
       case 'Netball':
         return <Heart className="h-6 w-6" />;
       case 'Golfers':
-        return <ShirtIcon className="h-6 w-6" />;
+        return <Shirt className="h-6 w-6" />;
       case 'T-Shirts':
         return <Tshirt className="h-6 w-6" />;
       case 'Shorts':
@@ -42,7 +41,7 @@ export const CategoryButton: React.FC<CategoryButtonProps> = ({ category, icon, 
       case 'Jackets':
         return <ShoppingBag className="h-6 w-6" />;
       case 'Tracksuits':
-        return <Pants className="h-6 w-6" />;
+        return <PantsIcon className="h-6 w-6" />;
       case 'Accessories':
         return <Ruler className="h-6 w-6" />;
       default:
