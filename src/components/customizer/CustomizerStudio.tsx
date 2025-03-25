@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
@@ -259,7 +258,7 @@ const CustomizerStudio: React.FC<CustomizerStudioProps> = ({ product }) => {
               {/* Size Selection */}
               <div>
                 <Label htmlFor="size-select">Size</Label>
-                <Select id="size-select" value={selectedSize} onValueChange={setSelectedSize}>
+                <Select value={selectedSize} onValueChange={setSelectedSize}>
                   <SelectTrigger className="w-full mt-2">
                     <SelectValue placeholder="Select a size" />
                   </SelectTrigger>
@@ -357,7 +356,6 @@ const CustomizerStudio: React.FC<CustomizerStudioProps> = ({ product }) => {
                   <div>
                     <Label htmlFor="text-font">Text Font</Label>
                     <Select 
-                      id="text-font"
                       value={options.textFont || textFonts[0].value} 
                       onValueChange={updateTextFont}
                     >
@@ -379,7 +377,6 @@ const CustomizerStudio: React.FC<CustomizerStudioProps> = ({ product }) => {
                     <div className="flex items-center gap-4 mt-2">
                       <span className="text-sm">Small</span>
                       <Slider
-                        id="text-size"
                         value={[textSize]}
                         min={12}
                         max={72}
@@ -437,7 +434,6 @@ const CustomizerStudio: React.FC<CustomizerStudioProps> = ({ product }) => {
                   <div>
                     <Label htmlFor="logo-position">Logo Position</Label>
                     <Select 
-                      id="logo-position"
                       value={options.logoPosition || 'center'} 
                       onValueChange={(value) => updateLogoPosition(value as 'left' | 'right' | 'center')}
                     >

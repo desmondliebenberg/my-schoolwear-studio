@@ -10,7 +10,9 @@ import {
   Home,
   Shirt,
   Heart,
-  User
+  User,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
@@ -24,6 +26,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,8 +34,9 @@ const Navbar: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { getItemCount } = useCart();
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
   
-  // Handle scroll effect
+  // Handle scroll effect with animated transition
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -70,12 +74,17 @@ const Navbar: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
     }`}>
+      {/* Announcement Bar */}
+      <div className="bg-accent text-accent-foreground py-2 text-center text-sm font-medium animate-slide-in">
+        <p>Free shipping on orders over $50! Use code <span className="font-bold">FREESHIP</span> at checkout</p>
+      </div>
+      
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="text-xl md:text-2xl font-bold text-primary transition-all duration-300 hover:text-glow">
-              My Schoolwear Hub
+              CustomShop Pro
             </span>
           </Link>
 
@@ -84,12 +93,26 @@ const Navbar: React.FC = () => {
             <Link to="/" className={`nav-item ${isActive('/')}`}>Home</Link>
             <Link to="/products" className={`nav-item ${isActive('/products')}`}>Products</Link>
             <Link to="/customizer" className={`nav-item ${isActive('/customizer')}`}>Customize</Link>
-            <Link to="/about" className={`nav-item ${isActive('/about')}`}>About Us</Link>
+            <Link to="/about" className={`nav-item ${isActive('/about')}`}>About</Link>
             <Link to="/contact" className={`nav-item ${isActive('/contact')}`}>Contact</Link>
           </nav>
 
           {/* Right Actions */}
           <div className="flex items-center space-x-2">
+            {/* Theme Toggle */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleTheme}
+              className="hover:bg-primary/10"
+            >
+              {theme === 'dark' ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
+            
             {/* Search */}
             <Button 
               variant="ghost" 
@@ -184,22 +207,22 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden animate-fade-in bg-white dark:bg-gray-900 shadow-lg">
           <nav className="flex flex-col p-4 space-y-3">
-            <Link to="/" className="flex items-center p-2 hover:bg-primary/5 rounded-md">
+            <Link to="/" className={`flex items-center p-2 hover:bg-primary/5 rounded-md ${isActive('/')}`}>
               <Home className="mr-3 h-5 w-5" />
               <span>Home</span>
             </Link>
-            <Link to="/products" className="flex items-center p-2 hover:bg-primary/5 rounded-md">
+            <Link to="/products" className={`flex items-center p-2 hover:bg-primary/5 rounded-md ${isActive('/products')}`}>
               <Shirt className="mr-3 h-5 w-5" />
               <span>Products</span>
             </Link>
-            <Link to="/customizer" className="flex items-center p-2 hover:bg-primary/5 rounded-md">
+            <Link to="/customizer" className={`flex items-center p-2 hover:bg-primary/5 rounded-md ${isActive('/customizer')}`}>
               <ShoppingBag className="mr-3 h-5 w-5" />
               <span>Customize</span>
             </Link>
-            <Link to="/about" className="flex items-center p-2 hover:bg-primary/5 rounded-md">
-              <span className="ml-8">About Us</span>
+            <Link to="/about" className={`flex items-center p-2 hover:bg-primary/5 rounded-md ${isActive('/about')}`}>
+              <span className="ml-8">About</span>
             </Link>
-            <Link to="/contact" className="flex items-center p-2 hover:bg-primary/5 rounded-md">
+            <Link to="/contact" className={`flex items-center p-2 hover:bg-primary/5 rounded-md ${isActive('/contact')}`}>
               <span className="ml-8">Contact</span>
             </Link>
           </nav>
